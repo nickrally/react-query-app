@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./Dropdown.css";
 
-const Dropdown = ({ options }) => {
+const Dropdown = ({ options, handleSelection }) => {
   const firstChoice = options && options[0] ? options[0] : "";
-  const [selectedOption, setSelectedOption] = useState(firstChoice);
+  //const [selectedOption, setSelectedOption] = useState(firstChoice);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
+    console.log(value);
+    handleSelection(value);
     setIsOpen(false);
-    console.log(selectedOption);
   };
   return (
     <div className="dropdown-container">
@@ -20,9 +20,7 @@ const Dropdown = ({ options }) => {
         className="dropdown-header"
         value="select chart type"
         onClick={toggle}
-      >
-        {selectedOption || ""}
-      </div>
+      ></div>
       {isOpen && (
         <div className="dropdown-list-container">
           <ul className="dropdown-list">

@@ -6,7 +6,7 @@ import Dropdown from "./components/Dropdown/Dropdown";
 const options = ["bar", "pie"];
 
 export default function App() {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState("bar");
   const handleSelection = (item) => {
     setSelected(item);
   };

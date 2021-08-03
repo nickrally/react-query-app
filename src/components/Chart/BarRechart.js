@@ -16,6 +16,7 @@ import {
 ]; */
 
 const BarRechart = ({ data }) => {
+  console.log("BarRechart...");
   return (
     <BarChart
       width={500}

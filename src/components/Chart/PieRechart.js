@@ -37,6 +37,7 @@ const renderCustomizedLabel = ({
 };
 
 const PieRechart = ({ data }) => {
+  console.log("PieRechart...");
   const formattedData = data.map((item) => {
     return {
       name: Object.keys(item)[0],

@@ -6,6 +6,7 @@ const Wsapi = ({ chart }) => {
   const [wsapiData, setWsapiData] = useState([]);
   const { loading, error, makeRequest: makeWsapiRequest } = useFetch();
   useEffect(() => {
+    console.log("useEffect in Wsapi component");
     const scheduleStates = ["In-Progress", "Accepted"];
     const apiKey = process.env.REACT_APP_APIKEY;
     const workspace = process.env.REACT_APP_WORKSPACE;

@@ -1,9 +1,11 @@
 import { PieChart, Pie, Cell } from "recharts";
 
+/* 
+Pie chart takes data formatted this way:
 const data = [
-  { name: "In Progress", value: 1000 },
-  { name: "Released", value: 500 },
-];
+  { name: "In Progress", value: 2 },
+  { name: "Accepted", value: 1 },
+]; */
 
 const COLORS = ["#0088FE", "#00C49F"];
 
@@ -34,11 +36,17 @@ const renderCustomizedLabel = ({
   );
 };
 
-const PieRechart = () => {
+const PieRechart = ({ data }) => {
+  const formattedData = data.map((item) => {
+    return {
+      name: Object.keys(item)[0],
+      value: item[Object.keys(item)[0]],
+    };
+  });
   return (
     <PieChart width={400} height={400}>
       <Pie
-        data={data}
+        data={formattedData}
         cx="50%"
         cy="50%"
         labelLine={false}

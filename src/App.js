@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Fragment } from "react";
-import BarRechart from "./components/Chart/BarRechart";
-import PieRechart from "./components/Chart/PieRechart";
-import Dropdown from "./components/Dropdown/Dropdown";
+import React, { useState, useCallback, Fragment } from "react";
 
+import Dropdown from "./components/Dropdown/Dropdown";
+import Wsapi from "./components/Rally/Wsapi";
+// import BarRechart from "./components/Chart/BarRechart";
+// import PieRechart from "./components/Chart/PieRechart";
 const options = ["bar", "pie"];
 
 export default function App() {
@@ -10,12 +11,11 @@ export default function App() {
   const handleSelection = (item) => {
     setSelected(item);
   };
-
+  const formatData = useCallback((data) => {});
   return (
     <Fragment>
       <Dropdown options={options} handleSelection={handleSelection} />
-      {selected === "bar" && <BarRechart />}
-      {selected === "pie" && <PieRechart />}
+      <Wsapi chart={selected} />
     </Fragment>
   );
 }

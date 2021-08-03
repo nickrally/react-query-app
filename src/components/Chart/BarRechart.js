@@ -8,14 +8,14 @@ import {
   Legend,
 } from "recharts";
 
-const data = [
+/* const datax = [
   {
     inProgress: 1000,
-    released: 500,
+    accepted: 500,
   },
-];
+]; */
 
-const BarRechart = () => {
+const BarRechart = ({ data }) => {
   return (
     <BarChart
       width={500}
@@ -33,8 +33,8 @@ const BarRechart = () => {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar name="In Progress" dataKey="inProgress" fill="#8884d8" />
-      <Bar name="Released" dataKey="released" fill="#82ca9d" />
+      <Bar name="In-Progress" dataKey="In-Progress" fill="#8884d8" />
+      <Bar name="Accepted" dataKey="Accepted" fill="#82ca9d" />
     </BarChart>
   );
 };

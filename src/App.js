@@ -1,21 +1,27 @@
 import React, { useState, useCallback, Fragment } from "react";
-
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Wsapi from "./components/Rally/Wsapi";
-
+import BarRechart from "./components/Chart/BarRechart";
+import PieRechart from "./components/Chart/PieRechart";
 const options = ["bar", "pie"];
 
 export default function App() {
-  console.log("App...");
-  const [selected, setSelected] = useState("bar");
+  const [selected, setSelected] = useState("pie");
+  const [data, setData] = useState([]);
   const handleSelection = (item) => {
     setSelected(item);
   };
-
+  const queryClient = new QueryClient();
+  const getData = (response) => {
+    setData(response);
+  };
   return (
-    <Fragment>
+    <QueryClientProvider client={queryClient}>
       <Dropdown options={options} handleSelection={handleSelection} />
-      <Wsapi chart={selected} />
-    </Fragment>
+      <Wsapi getData={getData} />
+      {selected === "pie" && <PieRechart data={data} />}
+      {selected === "bar" && <BarRechart data={data} />}
+    </QueryClientProvider>
   );
 }

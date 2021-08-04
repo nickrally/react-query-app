@@ -8,20 +8,22 @@ import {
   Legend,
 } from "recharts";
 
-/* const datax = [
-  {
-    inProgress: 1000,
-    accepted: 500,
-  },
-]; */
+const scheduleStates = ["In-Progress", "Accepted"];
 
 const BarRechart = ({ data }) => {
   console.log("BarRechart...");
+  console.log(data);
+  const formattedData = scheduleStates.map((scheduleState, i) => {
+    return {
+      [scheduleState]: data[i].data["QueryResult"]["TotalResultCount"],
+    };
+  });
+
   return (
     <BarChart
       width={500}
       height={300}
-      data={data}
+      data={formattedData}
       margin={{
         top: 5,
         right: 30,

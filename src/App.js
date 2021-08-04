@@ -1,9 +1,9 @@
-import React, { useState, useCallback, Fragment } from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Wsapi from "./components/Rally/Wsapi";
-import BarRechart from "./components/Chart/BarRechart";
-import PieRechart from "./components/Chart/PieRechart";
+import RallyBarChart from "./components/Chart/RallyBarChart";
+import RallyPieChart from "./components/Chart/RallyPieChart";
 const options = ["bar", "pie"];
 
 export default function App() {
@@ -20,8 +20,8 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <Dropdown options={options} handleSelection={handleSelection} />
       <Wsapi getData={getData} />
-      {selected === "pie" && <PieRechart data={data} />}
-      {selected === "bar" && <BarRechart data={data} />}
+      {selected === "pie" && <RallyPieChart data={data} />}
+      {selected === "bar" && <RallyBarChart data={data} />}
     </QueryClientProvider>
   );
 }

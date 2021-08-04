@@ -10,9 +10,9 @@ import {
 
 const scheduleStates = ["In-Progress", "Accepted"];
 
-const BarRechart = ({ data }) => {
-  console.log("BarRechart...");
-  console.log(data);
+const RallyBarChart = ({ data }) => {
+  console.log("RallyBarChart...");
+
   const formattedData = scheduleStates.map((scheduleState, i) => {
     return {
       [scheduleState]: data[i].data["QueryResult"]["TotalResultCount"],
@@ -42,4 +42,4 @@ const BarRechart = ({ data }) => {
   );
 };
 
-export default BarRechart;
+export default RallyBarChart;

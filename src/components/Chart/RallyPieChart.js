@@ -37,16 +37,16 @@ const renderCustomizedLabel = ({
 
 const scheduleStates = ["In-Progress", "Accepted"];
 
-const PieRechart = ({ data }) => {
-  console.log("PieRechart...");
-  console.log(data);
+const RallyPieChart = ({ data }) => {
+  console.log("RallyPieChart...");
+
   const formattedData = data.map((item) => {
     return {
       name: Object.keys(item)[0],
       value: item[Object.keys(item)[0]]["QueryResult"]["TotalResultCount"],
     };
   });
-  console.log(formattedData);
+
   return (
     <PieChart width={400} height={400}>
       <Pie
@@ -67,4 +67,4 @@ const PieRechart = ({ data }) => {
   );
 };
 
-export default PieRechart;
+export default RallyPieChart;

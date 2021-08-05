@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import RallyBarChart from "../Chart/RallyBarChart";
+import RallyPieChart from "../Chart/RallyPieChart";
 
 const scheduleStates = ["In-Progress", "Accepted"];
 const apiKey = process.env.REACT_APP_APIKEY;
@@ -34,22 +36,18 @@ for (const paramObj of params) {
   );
 }
 
-const Wsapi = ({ getData }) => {
+const Wsapi = ({ chart }) => {
   console.log("Wsapi ...");
-
-  const { status, data, error, isLoading } = useQuery(
-    "fetchStories",
-    async () => {
-      const result = await axios.all(requests);
-      getData(result);
-      return result;
-    }
-  );
+  const { data, error, isLoading } = useQuery("fetchStories", async () => {
+    return await axios.all(requests);
+  });
 
   return (
     <div>
       {isLoading && <div className="loader">Loading...</div>}
-      {error && <div className="error">OH NO </div>}
+      {error && <div className="error">{error.message}</div>}
+      {!isLoading && !error && chart === "pie" && <RallyPieChart data={data} />}
+      {!isLoading && !error && chart === "bar" && <RallyBarChart data={data} />}
     </div>
   );
 };

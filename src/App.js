@@ -7,7 +7,7 @@ import "./App.css";
 export default function App() {
   const options = useMemo(() => ["bar", "pie"], []);
   const [counter, setCounter] = useState(0);
-  const [selected, setSelected] = useState("pie");
+  const [selected, setSelected] = useState("bar");
   const handleSelection = (item) => {
     setSelected(item);
   };

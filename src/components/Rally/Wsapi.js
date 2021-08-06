@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useQuery } from "react-query";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React from "react";
+import { useQuery, QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import RallyBarChart from "../Chart/RallyBarChart";
 import RallyPieChart from "../Chart/RallyPieChart";
 
@@ -40,24 +41,42 @@ for (const paramObj of params) {
 
 const Wsapi = ({ chart }) => {
   console.log("Wsapi ...");
-  const { data, error, isLoading } = useQuery("fetchStories", async () => {
-    return await axios.all(requests);
-  });
+  const { data, error, isLoading } = useQuery(
+    "fetchStories",
+    async () => {
+      return await axios.all(requests);
+    },
+    {
+      onSuccess: () => console.log("all is good"),
+      onError: () => console.log("Oh noes!"),
+    }
+  );
 
   return (
-    <div>
+    <React.Fragment>
       {isLoading && <div className="loader">Loading...</div>}
       {error && <div className="error">{error.message}</div>}
       {!isLoading && !error && chart === "pie" && <RallyPieChart data={data} />}
       {!isLoading && !error && chart === "bar" && <RallyBarChart data={data} />}
-    </div>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </React.Fragment>
   );
 };
 
-export default function WrapedWsapi({ chart }) {
+/* export default function WrappedWsapi({ chart }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Wsapi chart={chart} />
     </QueryClientProvider>
   );
-}
+} */
+
+const WrappedWsapi = ({ chart }) => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Wsapi chart={chart} />
+    </QueryClientProvider>
+  );
+};
+
+export default React.memo(WrappedWsapi);

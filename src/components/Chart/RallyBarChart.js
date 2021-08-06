@@ -8,15 +8,7 @@ import {
   Legend,
 } from "recharts";
 
-/* const datax = [
-  {
-    inProgress: 1000,
-    accepted: 500,
-  },
-]; */
-
 const RallyBarChart = ({ data }) => {
-  console.log("BarRechart...");
   return (
     <BarChart
       width={500}

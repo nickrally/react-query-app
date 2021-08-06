@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./Dropdown.css";
 
 const Dropdown = ({ options, handleSelection }) => {
-  console.log("Dropdown...");
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 

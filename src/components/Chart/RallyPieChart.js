@@ -37,7 +37,6 @@ const renderCustomizedLabel = ({
 };
 
 const RallyPieChart = ({ data }) => {
-  console.log("PieRechart...");
   const formattedData = data.map((item) => {
     return {
       name: Object.keys(item)[0],

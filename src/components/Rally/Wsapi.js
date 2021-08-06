@@ -40,17 +40,9 @@ for (const paramObj of params) {
 }
 
 const Wsapi = ({ chart }) => {
-  console.log("Wsapi ...");
-  const { data, error, isLoading } = useQuery(
-    "fetchStories",
-    async () => {
-      return await axios.all(requests);
-    },
-    {
-      onSuccess: () => console.log("all is good"),
-      onError: () => console.log("Oh noes!"),
-    }
-  );
+  const { data, error, isLoading } = useQuery("fetchStories", async () => {
+    return await axios.all(requests);
+  });
 
   return (
     <React.Fragment>

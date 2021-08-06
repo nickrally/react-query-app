@@ -38,7 +38,6 @@ const renderCustomizedLabel = ({
 const scheduleStates = ["In-Progress", "Accepted"];
 
 const RallyPieChart = ({ data }) => {
-  console.log("RallyPieChart...");
   const formattedData = scheduleStates.map((scheduleState, i) => {
     return {
       name: scheduleState,

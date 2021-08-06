@@ -11,8 +11,6 @@ import {
 const scheduleStates = ["In-Progress", "Accepted"];
 
 const RallyBarChart = ({ data }) => {
-  console.log("RallyBarChart...");
-
   const formattedData = scheduleStates.map((scheduleState, i) => {
     return {
       [scheduleState]: data[i].data["QueryResult"]["TotalResultCount"],

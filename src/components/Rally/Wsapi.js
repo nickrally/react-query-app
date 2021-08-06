@@ -20,10 +20,6 @@ const Wsapi = ({ chart }) => {
     const params = [];
     const packgeWsapiData = (results) => {
       const data = scheduleStates.map((scheduleState, i) => {
-        /* return {
-          name: scheduleState,
-          value: results[i].data["QueryResult"]["TotalResultCount"],
-        }; */
         return {
           [scheduleState]: results[i].data["QueryResult"]["TotalResultCount"],
         };

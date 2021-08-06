@@ -50,18 +50,10 @@ const Wsapi = ({ chart }) => {
       {error && <div className="error">{error.message}</div>}
       {!isLoading && !error && chart === "pie" && <RallyPieChart data={data} />}
       {!isLoading && !error && chart === "bar" && <RallyBarChart data={data} />}
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/*<ReactQueryDevtools initialIsOpen={false} />*/}
     </React.Fragment>
   );
 };
-
-/* export default function WrappedWsapi({ chart }) {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Wsapi chart={chart} />
-    </QueryClientProvider>
-  );
-} */
 
 const WrappedWsapi = ({ chart }) => {
   return (

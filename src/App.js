@@ -1,21 +1,28 @@
-import React, { useState } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React, { useState, useCallback, useMemo, Fragment } from "react";
 import Dropdown from "./components/Dropdown/Dropdown";
-import Wsapi from "./components/Rally/Wsapi";
-
-const options = ["bar", "pie"];
+import WrappedWsapi from "./components/Rally/Wsapi";
+import "./App.css";
 
 export default function App() {
+  const options = useMemo(() => ["bar", "pie"], []);
   const [selected, setSelected] = useState("pie");
-  const handleSelection = (item) => {
+  const [counter, setCounter] = useState(0);
+
+  const handleSelection = useCallback((item) => {
     setSelected(item);
+  }, []);
+
+  const handleCounterClick = () => {
+    setCounter((prev) => prev + 1);
   };
-  const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <Fragment>
+      <button className="counter" onClick={handleCounterClick}>
+        {counter}
+      </button>
       <Dropdown options={options} handleSelection={handleSelection} />
-      <Wsapi chart={selected} />
-    </QueryClientProvider>
+      <WrappedWsapi chart={selected} />
+    </Fragment>
   );
 }

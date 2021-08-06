@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import RallyBarChart from "../Chart/RallyBarChart";
 import RallyPieChart from "../Chart/RallyPieChart";
 
+const queryClient = new QueryClient();
 const scheduleStates = ["In-Progress", "Accepted"];
 const apiKey = process.env.REACT_APP_APIKEY;
 const workspace = process.env.REACT_APP_WORKSPACE;
@@ -52,4 +54,10 @@ const Wsapi = ({ chart }) => {
   );
 };
 
-export default Wsapi;
+export default function WrapedWsapi({ chart }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Wsapi chart={chart} />
+    </QueryClientProvider>
+  );
+}

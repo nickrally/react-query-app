@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Dropdown.css";
 
 const Dropdown = ({ options, handleSelection }) => {
   console.log("Dropdown...");
+  //const options = ["bar", "pie"];
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -34,4 +35,5 @@ const Dropdown = ({ options, handleSelection }) => {
     </div>
   );
 };
-export default Dropdown;
+export default React.memo(Dropdown);
+//export default Dropdown;

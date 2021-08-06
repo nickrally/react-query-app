@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 
 /* 
 Pie chart takes data formatted this way:
@@ -36,7 +36,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const PieRechart = ({ data }) => {
+const RallyPieChart = ({ data }) => {
   console.log("PieRechart...");
   const formattedData = data.map((item) => {
     return {
@@ -60,8 +60,9 @@ const PieRechart = ({ data }) => {
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
+      <Legend />
     </PieChart>
   );
 };
 
-export default PieRechart;
+export default RallyPieChart;

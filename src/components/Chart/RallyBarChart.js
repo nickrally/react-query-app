@@ -15,7 +15,7 @@ import {
   },
 ]; */
 
-const BarRechart = ({ data }) => {
+const RallyBarChart = ({ data }) => {
   console.log("BarRechart...");
   return (
     <BarChart
@@ -40,4 +40,4 @@ const BarRechart = ({ data }) => {
   );
 };
 
-export default BarRechart;
+export default RallyBarChart;

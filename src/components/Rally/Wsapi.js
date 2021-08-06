@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetch from "../../fetch/use-fetch";
-import BarRechart from "../Chart/BarRechart";
-import PieRechart from "../Chart/PieRechart";
+import RallyBarChart from "../Chart/RallyBarChart";
+import RallyPieChart from "../Chart/RallyPieChart";
 const Wsapi = ({ chart }) => {
   const [wsapiData, setWsapiData] = useState([]);
   const { loading, error, makeRequest: makeWsapiRequest } = useFetch();
@@ -43,8 +43,8 @@ const Wsapi = ({ chart }) => {
     <div>
       {loading && <div className="loader">Loading...</div>}
       {error && <div className="error">{error} </div>}
-      {chart === "bar" && <BarRechart data={wsapiData} />}
-      {chart === "pie" && <PieRechart data={wsapiData} />}
+      {chart === "bar" && <RallyBarChart data={wsapiData} />}
+      {chart === "pie" && <RallyPieChart data={wsapiData} />}
     </div>
   );
 };

@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useMemo, Fragment } from "react";
 
 import Dropdown from "./components/Dropdown/Dropdown";
 import Wsapi from "./components/Rally/Wsapi";
-
-const options = ["bar", "pie"];
+import "./App.css";
 
 export default function App() {
+  const options = useMemo(() => ["bar", "pie"], []);
   const [counter, setCounter] = useState(0);
   const [selected, setSelected] = useState("bar");
   const handleSelection = (item) => {
